@@ -151,6 +151,7 @@ public class loginActivity extends AppCompatActivity {
 
     //Check if Register Inputs Valid
     private boolean checkRegisterInputsValid(){
+        Account tempAccount = new Account(Role, Email, Pwd);
         if( Email == null || Email.equals("")){
             Toast.makeText(loginActivity.this, "Email can not be empty", Toast.LENGTH_SHORT).show();
             return false;
@@ -162,6 +163,13 @@ public class loginActivity extends AppCompatActivity {
         if( Role == null || Role.equals("Admin")){
             Toast.makeText(loginActivity.this, "Role error", Toast.LENGTH_SHORT).show();
             return false;
+        }
+        for (Account i: accounts) {
+            System.out.println(i);
+            if ( tempAccount.getEmail().equals(i.getEmail())) {
+                Toast.makeText(loginActivity.this, "Account has been created,please login", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
         return true;
     }
