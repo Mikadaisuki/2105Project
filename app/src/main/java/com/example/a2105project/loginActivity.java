@@ -144,7 +144,12 @@ public class loginActivity extends AppCompatActivity {
         System.out.println("login");
         if (checkLoginInputsValid()) {
             Intent intent = new Intent();
-            intent.setClass(loginActivity.this, clientPageActivity.class);
+            if(Role == "Client"){
+            intent.setClass(loginActivity.this, clientPageActivity.class);}
+            if(Role == "Cook"){
+                intent.setClass(loginActivity.this, cookPageActivity.class);}
+            if(Role == "Admin"){
+                intent.setClass(loginActivity.this, adminPageActivity.class);}
             startActivity(intent);
         }
     }
