@@ -13,15 +13,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.a2105project.Account.Account;
+import com.example.a2105project.Entity.Account;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.LinkedList;
 import java.util.List;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class loginActivity extends AppCompatActivity {
@@ -130,6 +128,7 @@ public class loginActivity extends AppCompatActivity {
         if(checkRegisterInputsValid()){
             reference = FirebaseDatabase.getInstance().getReference("Account");
             Account account=new Account(Role, Email, Pwd);
+            account.setID(Email);
             String key = reference.push().getKey();
             System.out.println(key);
             key = Email;

@@ -1,9 +1,11 @@
-package com.example.a2105project.Account;
+package com.example.a2105project.Entity;
 
 public class Account {
+    private String ID;
     private String Role;
     private String Email;
     private String Pwd;
+    private String Status = "Active";
 
     public Account() {
     }
@@ -13,6 +15,14 @@ public class Account {
         this.Email = email;
         this.Pwd = pwd;
     }
+
+    public String getID() { return ID; }
+
+    public void setID(String ID) { this.ID = ID; }
+
+    public String getStatus() {return Status;}
+
+    public void setStatus(String status) {this.Status = status;}
 
     public void setRole(String role) {
         this.Role = role;
