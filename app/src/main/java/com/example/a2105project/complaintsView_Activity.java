@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.example.a2105project.Entity.Account;
 import com.example.a2105project.Entity.Complaint;
@@ -15,15 +17,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class complaintsView_Activity extends AppCompatActivity {
+
     private DatabaseReference accountRef;
     private DatabaseReference complaintRef;
+
     private List<String> customerIDs;
     private List<String> cookIDs;
+    private List<Complaint> complaints;
+
+    private ListView listView;
 
     private Button random;
 
@@ -32,9 +41,11 @@ public class complaintsView_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_view);
         random = (Button) findViewById(R.id.random);
+        listView = (ListView)findViewById(R.id.listview);
 
         customerIDs = new LinkedList<>();
         cookIDs = new LinkedList<>();
+        complaints = new LinkedList<>();
 
         accountRef = FirebaseDatabase.getInstance().getReference("Account");
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaint");
@@ -64,6 +75,30 @@ public class complaintsView_Activity extends AppCompatActivity {
                             break;
                     }
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        complaintRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                complaints.clear();
+                List<Map<String, String >> data = new LinkedList<>();
+                for(DataSnapshot child : snapshot.getChildren()){
+                    Complaint complaint = child.getValue(Complaint.class);
+                    complaints.add(complaint);
+
+                    Map<String, String> dataMap = new HashMap<>();
+                    dataMap.put("Client",complaint.getCustomerID());
+                    dataMap.put("Cook",complaint.getCookID());
+                    data.add(dataMap);
+                }
+                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.complain_list_layout,
+                        new String[]{"Client","Cook"}, new int []{R.id.Client, R.id.Cook});
+                listView.setAdapter(adapter);
             }
 
             @Override
