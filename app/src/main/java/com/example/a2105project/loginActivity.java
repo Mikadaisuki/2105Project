@@ -35,7 +35,7 @@ public class loginActivity extends AppCompatActivity {
     RadioButton CookRadio;
     RadioButton AdminRadio;
     DatabaseReference reference;
-    FirebaseDatabase firebaseDatabase ;
+    FirebaseDatabase firebaseDatabase;
     List<Account> accounts = new LinkedList<>();
 
     @Override
