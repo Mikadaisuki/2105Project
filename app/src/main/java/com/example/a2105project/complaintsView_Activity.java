@@ -3,11 +3,14 @@ package com.example.a2105project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.a2105project.Entity.Account;
 import com.example.a2105project.Entity.Complaint;
@@ -31,6 +34,7 @@ public class complaintsView_Activity extends AppCompatActivity {
     private List<String> customerIDs;
     private List<String> cookIDs;
     private List<Complaint> complaints;
+    private List<Account> accounts;
 
     private ListView listView;
 
@@ -46,6 +50,7 @@ public class complaintsView_Activity extends AppCompatActivity {
         customerIDs = new LinkedList<>();
         cookIDs = new LinkedList<>();
         complaints = new LinkedList<>();
+        accounts = new LinkedList<>();
 
         accountRef = FirebaseDatabase.getInstance().getReference("Account");
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaint");
@@ -62,8 +67,10 @@ public class complaintsView_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 customerIDs.clear();
                 cookIDs.clear();
+                accounts.clear();
                 for (DataSnapshot child : snapshot.getChildren()){
                     Account account = child.getValue(Account.class);
+                    accounts.add(account);
                     switch (account.getRole()){
                         case "Client":
                             customerIDs.add(account.getEmail());
@@ -89,23 +96,40 @@ public class complaintsView_Activity extends AppCompatActivity {
                 List<Map<String, String >> data = new LinkedList<>();
                 for(DataSnapshot child : snapshot.getChildren()){
                     Complaint complaint = child.getValue(Complaint.class);
+                    complaint.setID(child.getKey());
                     complaints.add(complaint);
 
                     Map<String, String> dataMap = new HashMap<>();
+                    dataMap.put("id",complaint.getID());
                     dataMap.put("Client",complaint.getCustomerID());
                     dataMap.put("Cook",complaint.getCookID());
                     data.add(dataMap);
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.complain_list_layout,
-                        new String[]{"Client","Cook"}, new int []{R.id.Client, R.id.Cook});
+                        new String[]{"id","Client","Cook"}, new int []{R.id.comIDtext,R.id.Client, R.id.Cook});
                 listView.setAdapter(adapter);
-            }
 
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView comIDtext = (TextView) view.findViewById(R.id.comIDtext);
+                        TextView Client = (TextView) view.findViewById(R.id.Client);
+                        TextView Cook = (TextView) view.findViewById(R.id.Cook);
+                        Intent intent = new Intent();
+                        intent.setClass(getApplicationContext(), reviewsActivity.class);
+                        intent.putExtra("ID",comIDtext.getText());
+                        intent.putExtra("Client", Client.getText());
+                        intent.putExtra("Cook", Cook.getText());
+                        startActivity(intent);
+                    }
+                });
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
     }
     public  void creatComplaint(int n){
         Random random = new Random();
