@@ -191,9 +191,11 @@ public class loginActivity extends AppCompatActivity {
             Toast.makeText(loginActivity.this, "Password can not be empty", Toast.LENGTH_SHORT).show();
             return false;
         }
+
         for (Account i: accounts) {
+
             System.out.println(i);
-            if ( tempAccount.toString().equals(i.toString())) {
+            if ( tempAccount.toString().equals(i.toString()) &&  i.getStatus() != "False") {
                 Toast.makeText(loginActivity.this, "Login", Toast.LENGTH_SHORT).show();
                 return true;
             }
