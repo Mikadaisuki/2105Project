@@ -200,7 +200,7 @@ public class loginActivity extends AppCompatActivity {
                 return true;
             }
         }
-        Toast.makeText(loginActivity.this, "Invalid input", Toast.LENGTH_SHORT).show();
+        Toast.makeText(loginActivity.this, "Invalid input, or you are blocked", Toast.LENGTH_SHORT).show();
         return false;
     }
 }
