@@ -49,9 +49,10 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "role='" + Role + '\'' +
+                " Role='" + Role + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Pwd='" + Pwd + '\'' +
+                ", Status='" + Status + '\'' +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ public class Complaint {
     private String description;
     private String CookID;
     private String CustomerID;
+    private String ID;
 
     public Complaint() {
     }
@@ -12,6 +13,14 @@ public class Complaint {
         this.description = description;
         this.CookID = cookID;
         this.CustomerID = customerID;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getDescription() {

@@ -3,9 +3,14 @@ package com.example.a2105project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.a2105project.Entity.Account;
 import com.example.a2105project.Entity.Complaint;
@@ -15,15 +20,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class complaintsView_Activity extends AppCompatActivity {
+
     private DatabaseReference accountRef;
     private DatabaseReference complaintRef;
+
     private List<String> customerIDs;
     private List<String> cookIDs;
+    private List<Complaint> complaints;
+    private List<Account> accounts;
+
+    private ListView listView;
 
     private Button random;
 
@@ -32,9 +45,12 @@ public class complaintsView_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_view);
         random = (Button) findViewById(R.id.random);
+        listView = (ListView)findViewById(R.id.listview);
 
         customerIDs = new LinkedList<>();
         cookIDs = new LinkedList<>();
+        complaints = new LinkedList<>();
+        accounts = new LinkedList<>();
 
         accountRef = FirebaseDatabase.getInstance().getReference("Account");
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaint");
@@ -51,8 +67,10 @@ public class complaintsView_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 customerIDs.clear();
                 cookIDs.clear();
+                accounts.clear();
                 for (DataSnapshot child : snapshot.getChildren()){
                     Account account = child.getValue(Account.class);
+                    accounts.add(account);
                     switch (account.getRole()){
                         case "Client":
                             customerIDs.add(account.getEmail());
@@ -71,6 +89,47 @@ public class complaintsView_Activity extends AppCompatActivity {
 
             }
         });
+        complaintRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                complaints.clear();
+                List<Map<String, String >> data = new LinkedList<>();
+                for(DataSnapshot child : snapshot.getChildren()){
+                    Complaint complaint = child.getValue(Complaint.class);
+                    complaint.setID(child.getKey());
+                    complaints.add(complaint);
+
+                    Map<String, String> dataMap = new HashMap<>();
+                    dataMap.put("id",complaint.getID());
+                    dataMap.put("Client",complaint.getCustomerID());
+                    dataMap.put("Cook",complaint.getCookID());
+                    data.add(dataMap);
+                }
+                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.complain_list_layout,
+                        new String[]{"id","Client","Cook"}, new int []{R.id.comIDtext,R.id.Client, R.id.Cook});
+                listView.setAdapter(adapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView comIDtext = (TextView) view.findViewById(R.id.comIDtext);
+                        TextView Client = (TextView) view.findViewById(R.id.Client);
+                        TextView Cook = (TextView) view.findViewById(R.id.Cook);
+                        Intent intent = new Intent();
+                        intent.setClass(getApplicationContext(), reviewsActivity.class);
+                        intent.putExtra("ID",comIDtext.getText());
+                        intent.putExtra("Client", Client.getText());
+                        intent.putExtra("Cook", Cook.getText());
+                        startActivity(intent);
+                    }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
     public  void creatComplaint(int n){
         Random random = new Random();
