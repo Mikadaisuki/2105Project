@@ -31,6 +31,7 @@ public class complaintsView_Activity extends AppCompatActivity {
     private DatabaseReference accountRef;
     private DatabaseReference complaintRef;
 
+    //Follow lists are used to get value of Database
     private List<String> customerIDs;
     private List<String> cookIDs;
     private List<Complaint> complaints;
@@ -55,6 +56,7 @@ public class complaintsView_Activity extends AppCompatActivity {
         accountRef = FirebaseDatabase.getInstance().getReference("Account");
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaint");
 
+        //Random complaint Listener
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +64,7 @@ public class complaintsView_Activity extends AppCompatActivity {
             }
         });
 
+        //Firebase account Value Listener
         accountRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -89,6 +92,8 @@ public class complaintsView_Activity extends AppCompatActivity {
 
             }
         });
+
+        //Firebase complaint Value Listener
         complaintRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -99,6 +104,7 @@ public class complaintsView_Activity extends AppCompatActivity {
                     complaint.setID(child.getKey());
                     complaints.add(complaint);
 
+                    //setting of the listview adapter
                     Map<String, String> dataMap = new HashMap<>();
                     dataMap.put("id",complaint.getID());
                     dataMap.put("Client",complaint.getCustomerID());
@@ -109,12 +115,15 @@ public class complaintsView_Activity extends AppCompatActivity {
                         new String[]{"id","Client","Cook"}, new int []{R.id.comIDtext,R.id.Client, R.id.Cook});
                 listView.setAdapter(adapter);
 
+                //items of listview click listener
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         TextView comIDtext = (TextView) view.findViewById(R.id.comIDtext);
                         TextView Client = (TextView) view.findViewById(R.id.Client);
                         TextView Cook = (TextView) view.findViewById(R.id.Cook);
+
+                        //data transport
                         Intent intent = new Intent();
                         intent.setClass(getApplicationContext(), reviewsActivity.class);
                         intent.putExtra("ID",comIDtext.getText());
@@ -131,6 +140,7 @@ public class complaintsView_Activity extends AppCompatActivity {
         });
 
     }
+    //create number of random complaint
     public  void creatComplaint(int n){
         Random random = new Random();
         for (int i = 0; i < n; i++){

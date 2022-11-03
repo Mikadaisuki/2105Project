@@ -16,6 +16,7 @@ public class adminPageActivity extends AppCompatActivity {
 
         ComBtn = (Button) findViewById(R.id.comBtn);
 
+        //ComBtn listener jump to  complaintsVie Activity
         ComBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -30,7 +30,7 @@ public class reviewsActivity extends AppCompatActivity {
     private DatabaseReference accountRef;
     private List<Complaint> complaints;
     private List<Account> accounts;
-
+    //Follow string is used to get value of transport data
     private String comID, cookEmail;
 
     private TextView customer, cook, comText;
@@ -49,17 +49,20 @@ public class reviewsActivity extends AppCompatActivity {
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaint");
         accountRef = FirebaseDatabase.getInstance().getReference("Account");
 
+        //get the transport data
         Intent intent = getIntent();
         comID = intent.getStringExtra("ID");
         String Client = intent.getStringExtra("Client");
         String Cook = intent.getStringExtra("Cook");
         cookEmail = intent.getStringExtra("Cook");
 
+        //set transport data in layout
         customer.setText(Client);
         cook.setText(Cook);
 
 
 
+        //use the ID to find specific complaint
         complaintRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,11 +84,12 @@ public class reviewsActivity extends AppCompatActivity {
 
 
     }
+    //dismiss the complaints
     public void dismiss(View view){
         complaintRef.child(comID).removeValue();
         finish();
     }
-
+    //suspend the cook
     public void suspend(View view){
         accountRef.child(cookEmail).child("status").setValue("False");
         finish();
