@@ -90,4 +90,9 @@ public class reviewsActivity extends AppCompatActivity {
         accountRef.child(cookEmail).child("status").setValue("False");
         finish();
     }
+
+    public void tempsuspend(View view){
+        accountRef.child(cookEmail).child("status").setValue("tempFalse");
+        finish();
+    }
 }
