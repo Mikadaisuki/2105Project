@@ -30,6 +30,7 @@ public class loginActivity extends AppCompatActivity {
 
     //Follow strings are used to get value of two Edittext
     String Email,Pwd,Role;
+    boolean tempsus = false;
 
     RadioButton ClientRadio;
     RadioButton CookRadio;
@@ -127,7 +128,7 @@ public class loginActivity extends AppCompatActivity {
     public void register(View view){
         if(checkRegisterInputsValid()){
             reference = FirebaseDatabase.getInstance().getReference("Account");
-            Account account=new Account(Role, Email, Pwd);
+            Account account = new Account(Role, Email, Pwd);
             account.setID(Email);
             String key = reference.push().getKey();
             System.out.println(key);
@@ -140,9 +141,10 @@ public class loginActivity extends AppCompatActivity {
 
     //Login method
     public void login(View view) {
-        System.out.println("login");
         if (checkLoginInputsValid()) {
             Intent intent = new Intent();
+            if(tempsus){
+                intent.setClass(loginActivity.this, tempSuspendActivity.class);}
             if(Role == "Client"){
             intent.setClass(loginActivity.this, clientPageActivity.class);}
             if(Role == "Cook"){
@@ -195,7 +197,18 @@ public class loginActivity extends AppCompatActivity {
         for (Account i: accounts) {
 
             System.out.println(i);
-            if ( tempAccount.toString().equals(i.toString()) &&  i.getStatus() != "False") {
+            boolean equals = tempAccount.toString().equals(i.toString());
+            System.out.println(equals);
+            if ( !equals && i.getStatus() == "tempFalse") {
+                Toast.makeText(loginActivity.this, "Your account is temporally suspend", Toast.LENGTH_SHORT).show();
+                tempsus = true;
+                return true;
+            }
+            if ( !equals && i.getStatus() == "False") {
+                Toast.makeText(loginActivity.this, "You are blocked", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if ( equals && i.getStatus() != "tempFalse" && i.getStatus() != "False") {
                 Toast.makeText(loginActivity.this, "Login", Toast.LENGTH_SHORT).show();
                 return true;
             }
