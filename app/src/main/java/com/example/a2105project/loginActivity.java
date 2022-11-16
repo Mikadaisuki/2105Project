@@ -195,18 +195,21 @@ public class loginActivity extends AppCompatActivity {
         }
 
         for (Account i: accounts) {
-
             System.out.println(i);
             boolean equals = tempAccount.toString().equals(i.toString());
-            System.out.println(equals);
-            if ( !equals && i.getStatus() == "tempFalse") {
+            boolean mailEqual = tempAccount.getEmail().equals(i.getEmail());
+            System.out.println("mailequai?"+ mailEqual);
+            System.out.println("allequal?"+equals);
+            if ( equals == false ) {
+                if(mailEqual && i.getStatus().equals("tempFalse")){
                 Toast.makeText(loginActivity.this, "Your account is temporally suspend", Toast.LENGTH_SHORT).show();
                 tempsus = true;
                 return true;
-            }
-            if ( !equals && i.getStatus() == "False") {
+                }
+                if(mailEqual && i.getStatus().equals("False")) {
                 Toast.makeText(loginActivity.this, "You are blocked", Toast.LENGTH_SHORT).show();
                 return false;
+                }
             }
             if ( equals && i.getStatus() != "tempFalse" && i.getStatus() != "False") {
                 Toast.makeText(loginActivity.this, "Login", Toast.LENGTH_SHORT).show();
