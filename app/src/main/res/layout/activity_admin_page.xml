@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#355C7D"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".adminPageActivity">
 
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="174dp"
+        android:layout_width="329dp"
+        android:layout_height="401dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.4962"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339">
@@ -22,14 +23,18 @@
             android:id="@+id/comBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Complaints" />
+            android:backgroundTint="#C06C84"
+            android:text="Complaints"
+            android:textColor="#EEEEEE" />
 
         <Button
             android:id="@+id/susBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Unblock users (In progress)" />
+            android:backgroundTint="#C06C84"
+            android:text="Unblock users (In progress)"
+            android:textColor="#EEEEEE" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

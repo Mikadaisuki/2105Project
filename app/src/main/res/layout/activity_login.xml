@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#343F56"
     tools:context=".loginActivity">
 
     <LinearLayout
@@ -26,11 +28,15 @@
             android:layout_width="match_parent"
             android:layout_height="139dp"
             android:layout_marginTop="50dp"
+            android:background="#FB9300"
             android:gravity="center"
             android:text="Welcome!"
+            android:textColor="#F5E6CA"
             android:textSize="50dp" />
 
         <TextView
+            android:background="#FB9300"
+            android:textColor="#F5E6CA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -58,21 +64,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Client" />
+            android:background="@drawable/bt_bg_01"
+            android:buttonTint="#00BCD4"
+            android:text="Client"
+            android:textColor="#E5E3C9" />
 
         <RadioButton
             android:id="@+id/CookChose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cook" />
+            android:background="@drawable/bt_bg_01"
+            android:buttonTint="#00BCD4"
+            android:text="Cook"
+            android:textColor="#E5E3C9" />
 
         <RadioButton
             android:id="@+id/AdminChose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Admin" />
+            android:background="@drawable/bt_bg_01"
+            android:buttonTint="#00BCD4"
+            android:checked="false"
+            android:text="Admin"
+            android:textColor="#E5E3C9" />
     </RadioGroup>
 
     <LinearLayout
@@ -87,14 +103,19 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <EditText
+            android:background="@drawable/bt_bg_01"
+            android:textColorHint="#E5E3C9"
             android:id="@+id/Emailtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
+
             android:hint="Please enter an email" />
 
         <EditText
+            android:background="@drawable/bt_bg_01"
+            android:textColorHint="#E5E3C9"
             android:id="@+id/Pwdtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,6 +124,8 @@
             android:inputType="textPassword" />
 
         <Button
+            android:backgroundTint="#F54748"
+            android:textColor="#E5E3C9"
             android:id="@+id/Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,6 +133,8 @@
             android:onClick="login"/>
 
         <Button
+            android:backgroundTint="#F54748"
+            android:textColor="#E5E3C9"
             android:id="@+id/Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
