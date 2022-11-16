@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".cookPageActivity">
 
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="66dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <Button
+            android:id="@+id/menulist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="see my menu list" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

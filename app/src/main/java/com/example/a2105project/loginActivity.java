@@ -143,14 +143,15 @@ public class loginActivity extends AppCompatActivity {
     public void login(View view) {
         if (checkLoginInputsValid()) {
             Intent intent = new Intent();
-            if(tempsus){
-                intent.setClass(loginActivity.this, tempSuspendActivity.class);}
             if(Role == "Client"){
             intent.setClass(loginActivity.this, clientPageActivity.class);}
             if(Role == "Cook"){
                 intent.setClass(loginActivity.this, cookPageActivity.class);}
             if(Role == "Admin"){
                 intent.setClass(loginActivity.this, adminPageActivity.class);}
+            if(Role == "Cook" && tempsus){
+                intent.setClass(loginActivity.this, tempSuspendActivity.class);}
+            intent.putExtra("Email", Email);
             startActivity(intent);
         }
     }
@@ -198,20 +199,26 @@ public class loginActivity extends AppCompatActivity {
             System.out.println(i);
             boolean equals = tempAccount.toString().equals(i.toString());
             boolean mailEqual = tempAccount.getEmail().equals(i.getEmail());
-            System.out.println("mailequai?"+ mailEqual);
-            System.out.println("allequal?"+equals);
+            boolean pwdEqual = tempAccount.getPwd().equals(i.getPwd());
+            tempsus = false;
+            System.out.println("mail equal? "+ mailEqual);
+            System.out.println("all equal? "+equals);
             if ( equals == false ) {
                 if(mailEqual && i.getStatus().equals("tempFalse")){
-                Toast.makeText(loginActivity.this, "Your account is temporally suspend", Toast.LENGTH_SHORT).show();
-                tempsus = true;
-                return true;
+                    Toast.makeText(loginActivity.this, "Your account is temporally suspend", Toast.LENGTH_SHORT).show();
+                    tempsus = true;
+                    return true;
                 }
                 if(mailEqual && i.getStatus().equals("False")) {
-                Toast.makeText(loginActivity.this, "You are blocked", Toast.LENGTH_SHORT).show();
-                return false;
+                    Toast.makeText(loginActivity.this, "You are blocked", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if(pwdEqual == false){
+                    Toast.makeText(loginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                    return false;
                 }
             }
-            if ( equals && i.getStatus() != "tempFalse" && i.getStatus() != "False") {
+            if ( equals ) {
                 Toast.makeText(loginActivity.this, "Login", Toast.LENGTH_SHORT).show();
                 return true;
             }
