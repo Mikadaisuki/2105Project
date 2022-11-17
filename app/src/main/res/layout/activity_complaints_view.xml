@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".complaintsView_Activity">
+    tools:context=".complaintsView_Activity"
+    android:background="#596E79">
 
     <LinearLayout
         android:layout_width="411dp"
@@ -22,7 +23,8 @@
             android:id="@+id/random"
             android:layout_width="match_parent"
             android:layout_height="69dp"
-            android:text="click to create 5 Random complaint" />
+            android:text="click to create 5 Random complaint"
+            android:backgroundTint="#C7B198"/>
 
         <ListView
             android:id="@+id/listview"

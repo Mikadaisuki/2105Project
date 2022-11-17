@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_02"
     tools:context=".cookMenuActivity">
 
     <LinearLayout
@@ -17,20 +18,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter meal name"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:textColor="#F7F7F7"
+            android:textColorHint="#F7F7F7"/>
 
         <EditText
             android:id="@+id/meal_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter amount"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:textColor="#F7F7F7"
+            android:textColorHint="#F7F7F7"/>
 
         <Button
             android:id="@+id/createBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="create meal" />
+            android:text="create meal"
+            android:backgroundTint="#374045"
+            android:textColor="#F7F7F7"/>
 
         <ListView
             android:id="@+id/cookMenuList"

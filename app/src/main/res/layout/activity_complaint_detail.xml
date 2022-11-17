@@ -5,6 +5,7 @@
     android:id="@+id/temp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#596E79"
     tools:context=".reviewsActivity">
 
     <LinearLayout
@@ -23,14 +24,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Client:"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
 
             <TextView
                 android:id="@+id/ClientDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
         </LinearLayout>
 
         <LinearLayout
@@ -44,14 +49,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Cook:"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
 
             <TextView
                 android:id="@+id/CookDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
         </LinearLayout>
 
         <LinearLayout
@@ -64,13 +73,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Detail:"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
 
             <TextView
                 android:id="@+id/ComText"
                 android:layout_width="match_parent"
                 android:layout_height="515dp"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:background="@android:color/transparent"
+                android:textColor="#F7F7F7"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,7 +96,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="suspend"
-                    android:text="Suspend" />
+                    android:text="Suspend"
+                    android:backgroundTint="#C7B198"
+                    android:textColor="#F7F7F7" />
 
                 <Button
                     android:id="@+id/button2"
@@ -91,7 +106,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="dismiss"
-                    android:text="Dismiss" />
+                    android:text="Dismiss"
+                    android:backgroundTint="#C7B198"
+                    android:textColor="#F7F7F7" />
 
                 <Button
                     android:id="@+id/button4"
@@ -99,7 +116,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="tempsuspend"
-                    android:text="tempSUS" />
+                    android:text="tempSUS"
+                    android:backgroundTint="#C7B198"
+                    android:textColor="#F7F7F7" />
             </LinearLayout>
 
         </LinearLayout>
