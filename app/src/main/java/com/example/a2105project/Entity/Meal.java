@@ -1,9 +1,10 @@
 package com.example.a2105project.Entity;
 
 public class Meal {
-    private String key;
+
     private String mealName;
     private String cookEmail;
+    private int amount;
 
 
     public Meal() {
@@ -13,12 +14,12 @@ public class Meal {
         this.mealName = mealName;
     }
 
-    public String getKey() {
-        return key;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public String getMealName() {
@@ -39,8 +40,7 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "Meal{" +
-                "key='" + key + '\'' +
+        return "Meal{" + '\'' +
                 ", mealName='" + mealName + '\'' +
                 ", cookEmail='" + cookEmail + '\'' +
                 '}';
