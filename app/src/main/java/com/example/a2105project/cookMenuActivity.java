@@ -34,8 +34,8 @@ public class cookMenuActivity extends AppCompatActivity {
     private EditText meal_name,meal_amount;
 
 
-    private ListView cookMenu;
-    private List<Meal> menu = new LinkedList<>();
+    private ListView cookMenuList;
+    private List<Meal> Menu = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class cookMenuActivity extends AppCompatActivity {
         createBtn = (Button)findViewById(R.id.createBtn);
         meal_name = (EditText)findViewById(R.id.meal_name);
         meal_amount = (EditText)findViewById(R.id.meal_amount);
+        cookMenuList = (ListView)findViewById(R.id.cookMenuList);
 
         cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
 
@@ -74,10 +75,24 @@ public class cookMenuActivity extends AppCompatActivity {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int j = Integer.parseInt(Meal_amount);
                 Meal meal = new Meal(Meal_name);
                 meal.setCookEmail(CookEmail);
+                meal.setAmount(j);
                 String key = cookMenuRef.push().getKey();
-                cookMenuRef.child(Meal_name).setValue(meal);
+                for(Meal i: Menu){
+                    if(meal.getMealName().equals(i.getMealName())){
+                        Map<String, Object> Upamount = new HashMap<>();
+                        Upamount.put("amount",i.getAmount()+j);
+                        cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail+"/"+Meal_name);
+                        cookMenuRef.updateChildren(Upamount);
+                        cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
+                        break;
+                    }else{
+                        cookMenuRef.child(Meal_name).setValue(meal);
+                    }
+                }
+
             }
         });
 
@@ -86,6 +101,20 @@ public class cookMenuActivity extends AppCompatActivity {
         cookMenuRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Menu.clear();
+                List<Map<String, String >> data = new LinkedList<>();
+                for(DataSnapshot child : snapshot.getChildren()){
+                    Meal meal = child.getValue(Meal.class);
+                    Menu.add(meal);
+
+                    Map<String, String> dataMap = new HashMap<>();
+                    dataMap.put("MealName",meal.getMealName());
+                    dataMap.put("MealAmount","x"+meal.getAmount());
+                    data.add(dataMap);
+                }
+                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.cook_menu_list,
+                        new String[]{"MealName","MealAmount"}, new int []{R.id.Name,R.id.Amount});
+                cookMenuList.setAdapter(adapter);
 
             }
 
