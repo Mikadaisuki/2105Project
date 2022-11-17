@@ -1,19 +1,23 @@
 package com.example.a2105project;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.a2105project.Entity.Complaint;
 import com.example.a2105project.Entity.Meal;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +36,6 @@ public class cookMenuActivity extends AppCompatActivity {
 
     private Button createBtn;
     private EditText meal_name,meal_amount;
-
 
     private ListView cookMenuList;
     private List<Meal> Menu = new LinkedList<>();
@@ -75,24 +78,34 @@ public class cookMenuActivity extends AppCompatActivity {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int j = Integer.parseInt(Meal_amount);
-                Meal meal = new Meal(Meal_name);
-                meal.setCookEmail(CookEmail);
-                meal.setAmount(j);
-                String key = cookMenuRef.push().getKey();
-                for(Meal i: Menu){
-                    if(meal.getMealName().equals(i.getMealName())){
-                        Map<String, Object> Upamount = new HashMap<>();
-                        Upamount.put("amount",i.getAmount()+j);
-                        cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail+"/"+Meal_name);
-                        cookMenuRef.updateChildren(Upamount);
-                        cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
-                        break;
-                    }else{
+                System.out.println("reach0");
+                if (Meal_name != null && Meal_amount != null){
+                    System.out.println("reach1");
+                    int j = Integer.parseInt(Meal_amount);
+                    Meal meal = new Meal(Meal_name);
+                    meal.setCookEmail(CookEmail);
+                    meal.setAmount(j);
+                    if(Menu.isEmpty()){
                         cookMenuRef.child(Meal_name).setValue(meal);
                     }
+                    for (Meal i : Menu) {
+                        System.out.println("for loop");
+                        if (meal.getMealName().equals(i.getMealName())) {
+                            System.out.println("reach2");
+                            Map<String, Object> Upamount = new HashMap<>();
+                            Upamount.put("amount", i.getAmount() + j);
+                            cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/" + CookEmail + "/" + Meal_name);
+                            cookMenuRef.updateChildren(Upamount);
+                            cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/" + CookEmail);
+                            break;
+                        }else{
+                            System.out.println("reach3");
+                            cookMenuRef.child(Meal_name).setValue(meal);
+                        }
+                    }
+                }else{
+                    Toast.makeText(cookMenuActivity.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -106,16 +119,42 @@ public class cookMenuActivity extends AppCompatActivity {
                 for(DataSnapshot child : snapshot.getChildren()){
                     Meal meal = child.getValue(Meal.class);
                     Menu.add(meal);
+                    System.out.println(Menu);
 
                     Map<String, String> dataMap = new HashMap<>();
                     dataMap.put("MealName",meal.getMealName());
                     dataMap.put("MealAmount","x"+meal.getAmount());
+                    dataMap.put("cookEmail",meal.getCookEmail());
                     data.add(dataMap);
                 }
-                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.cook_menu_list,
-                        new String[]{"MealName","MealAmount"}, new int []{R.id.Name,R.id.Amount});
+                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.menu_list,
+                        new String[]{"MealName","MealAmount","cookEmail"}, new int []{R.id.Name,R.id.Amount,R.id.cookEmail});
                 cookMenuList.setAdapter(adapter);
 
+                for(Meal i : Menu){
+                    if (i.getAmount()==0){
+                        cookMenuRef.child(i.getMealName()).removeValue();
+                    }
+                }
+
+                cookMenuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView MealName = (TextView) view.findViewById(R.id.Name);
+                        String mealname = MealName.getText().toString();
+                        new AlertDialog.Builder(
+                                cookMenuActivity.this)
+                                .setTitle("Delete this meal?")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        cookMenuRef.child(mealname).removeValue();
+                                    }
+                                })
+                                .setNegativeButton("No",null)
+                                .show();
+                    }
+                });
             }
 
             @Override
@@ -124,4 +163,5 @@ public class cookMenuActivity extends AppCompatActivity {
             }
         });
     }
+
 }
