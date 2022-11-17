@@ -1,6 +1,6 @@
 # SEG 2105Project
 Jiayi Liao st#300193336<br>
-Rongyuan Tian #300202105<br>
+Rongyuan Tian st#300202105<br>
 Mark Huang st#300193445<br>
 Jiaming Tian st#300255723<br>
 
