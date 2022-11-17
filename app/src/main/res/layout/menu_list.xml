@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_02">
+   >
 
     <LinearLayout
         android:layout_width="390dp"
@@ -17,10 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="30dp"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7"
-            android:textColorHint="#F7F7F7"/>
+            android:background="#E6B975"
+
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/Amount"
@@ -28,9 +27,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="30dp"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7"
-            android:textColorHint="#F7F7F7"/>
+            />
 
         <TextView
             android:id="@+id/cookEmail"
@@ -38,9 +35,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7"
-            android:textColorHint="#F7F7F7"
             />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
