@@ -1,8 +1,8 @@
 # SEG 2105Project
-Jiayi Liao st#300193336
-Rongyuan Tian #300202105
-Mark Huang st#300193445
-Jiaming Tian st#300255723
+Jiayi Liao st#300193336<br>
+Rongyuan Tian #300202105<br>
+Mark Huang st#300193445<br>
+Jiaming Tian st#300255723<br>
 
 Deliverable 2 introduction:<br>
 There is an admin with email 123 password 123, and rest of clients, cooks all with password 123 are shown below.<br>
