@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".clientMenuActivity">
+    tools:context=".clientMenuActivity"
+    android:background="#fef6e4">
 
     <LinearLayout
         android:layout_width="389dp"
@@ -13,7 +14,8 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <Button
+        <android.widget.Button
+            android:background="@drawable/bt_bg_01"
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

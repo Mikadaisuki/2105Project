@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_05"
+    android:background="#fef6e4"
     tools:context=".loginActivity">
 
     <LinearLayout
         android:id="@+id/Welcome"
-        android:layout_width="365dp"
-        android:layout_height="296dp"
+        android:layout_width="395dp"
+        android:layout_height="342dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/bt_bg_01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,117 +29,137 @@
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:text="Welcome!"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7"
+            android:textColor="#001858"
             android:textSize="50dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:background="@android:color/transparent"
-            android:gravity="center"
+
+            android:gravity="center_horizontal"
             android:text="Login as"
-            android:textColor="#F7F7F7"
-            android:textSize="25dp">
+            android:textColor="#001858"
+            android:textSize="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
 
         </TextView>
+
+        <RadioGroup
+
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_marginBottom="350dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            >
+
+            <RadioButton
+                android:id="@+id/ClientChose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bt_bg_02"
+                android:buttonTint="#001858"
+                android:text="Client"
+                android:textColor="#001858"
+                android:textSize="15dp"
+                android:layout_marginEnd="10dp"/>
+
+            <RadioButton
+                android:id="@+id/CookChose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bt_bg_02"
+                android:buttonTint="#001858"
+                android:text="Cook"
+                android:textColor="#001858"
+                android:textSize="15dp"
+                android:layout_marginEnd="10dp"/>
+
+            <RadioButton
+                android:id="@+id/AdminChose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bt_bg_02"
+                android:buttonTint="#001858"
+                android:checked="false"
+                android:text="Admin"
+                android:textColor="#001858"
+                android:textSize="15dp"
+                android:layout_marginEnd="10dp"/>
+        </RadioGroup>
 
 
     </LinearLayout>
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="380dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="350dp"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <RadioButton
-            android:id="@+id/ClientChose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:buttonTint="#00BCD4"
-            android:text="Client"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:textColor="#F7F7F7" />
-
-        <RadioButton
-            android:id="@+id/CookChose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:buttonTint="#00BCD4"
-            android:text="Cook"
-            android:textColor="#F7F7F7" />
-
-        <RadioButton
-            android:id="@+id/AdminChose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:buttonTint="#00BCD4"
-            android:checked="false"
-            android:text="Admin"
-            android:textColor="#F7F7F7" />
-    </RadioGroup>
-
     <LinearLayout
-        android:layout_width="399dp"
-        android:layout_height="234dp"
+        android:layout_width="395dp"
+        android:layout_height="295dp"
         android:layout_marginStart="3dp"
+        android:background="@drawable/bt_bg_01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+        app:layout_constraintTop_toBottomOf="@+id/Welcome">
 
         <EditText
             android:id="@+id/Emailtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Please enter an email"
             android:inputType="textEmailAddress"
-            android:textColor="#F7F7F7"
-            android:textColorHint="#F7F7F7" />
+            android:textColor="#001858"
+            android:textColorHint="#001858"
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/Pwdtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Please enter an password"
             android:inputType="textPassword"
-            android:textColor="#F7F7F7"
-            android:textColorHint="#F7F7F7" />
+            android:textColor="#001858"
+            android:textColorHint="#001858"
+            android:textSize="25dp" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bt_bg_02"
             android:onClick="login"
             android:text="login"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7" />
+            android:textColor="#001858"
+            android:textSize="25dp" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bt_bg_02"
             android:onClick="register"
-            android:text="Register"
-            android:background="@android:color/transparent"
-            android:textColor="#F7F7F7" />
+            android:text="Register!"
+            android:textColor="#001858"
+            android:textSize="25dp" />
 
     </LinearLayout>
 

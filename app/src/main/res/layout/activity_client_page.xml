@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_05"
+    android:background="#fef6e4"
     tools:context=".clientPageActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/Client_Menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="203dp"
+        android:layout_height="57dp"
         android:layout_marginStart="96dp"
         android:layout_marginTop="113dp"
         android:layout_marginEnd="95dp"

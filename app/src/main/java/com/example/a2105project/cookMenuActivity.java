@@ -30,7 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class cookMenuActivity extends AppCompatActivity {
+public class  cookMenuActivity extends AppCompatActivity {
     private DatabaseReference cookMenuRef;
     private String CookEmail,Meal_name,Meal_amount,Meal_ingredients,Meal_price;
 
