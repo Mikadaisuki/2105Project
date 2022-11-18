@@ -10,3 +10,7 @@ In admin page, there is a button to create 5 random complaint, and click them in
 ![image](https://user-images.githubusercontent.com/30582811/200096407-b2136590-c00b-43e2-a960-14165efc5a53.png)
 
 Deliverable 3 introduction:<br>
+The number of account and password of this part are the same as the Part2
+After starting this program. You have three options to log in.(Client,Cook,admin)
+Enter the Client section,we can see the the menu.(After clicking refresh)
+Enter the Cook section,
