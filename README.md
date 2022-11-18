@@ -12,4 +12,4 @@ In admin page, there is a button to create 5 random complaint, and click them in
 Deliverable 3 introduction:<br>
 The cook and client can login by same account in Deliverable 2 introduction, after login they can see a button to view menu.<br>
 Cook can add in or delete meal in his own menu, client can see all meals from all cooks.<br>
-Also, there a MealTest class(path:com.example.a2105project(Test)) to test Meal class.  
+Also, there is a MealTest class(path:com.example.a2105project(Test)) to test Meal class.  
