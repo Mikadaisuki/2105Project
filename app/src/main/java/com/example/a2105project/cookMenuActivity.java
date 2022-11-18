@@ -58,7 +58,7 @@ public class    cookMenuActivity extends AppCompatActivity {
         cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
 
 
-        // meal name listener
+        // MealName listener
         meal_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -69,7 +69,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                 Meal_name = editable.toString();}
         });
 
-        // meal amount listener
+        // MealAmount listener
         meal_amount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -80,7 +80,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                 Meal_amount = editable.toString();}
         });
 
-        // meal ingredients listener
+        // MealIngredients listener
         meal_ingredients.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -92,7 +92,7 @@ public class    cookMenuActivity extends AppCompatActivity {
             }
         });
 
-        // meal price listener
+        // MealPrice listener
         meal_price.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -120,7 +120,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                     if(Menu.isEmpty()){
                         cookMenuRef.child(Meal_name).setValue(meal);
                     }
-                    //Check if there are same meals and if there are, add the amount.
+                    //The program will check if this dish is available, and if there is this,it will change the amount of this dish.
                     for (Meal i : Menu) {
                         System.out.println("for loop");
                         if (meal.getMealName().equals(i.getMealName())) {

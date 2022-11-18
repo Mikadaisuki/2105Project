@@ -84,7 +84,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //Radio buttons listener
+        //RadioButtons listener
         ClientRadio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +107,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //Firebase Value listener
+        //FirebaseValue listener
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
