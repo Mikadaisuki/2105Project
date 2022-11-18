@@ -30,7 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class  cookMenuActivity extends AppCompatActivity {
+public class    cookMenuActivity extends AppCompatActivity {
     private DatabaseReference cookMenuRef;
     private String CookEmail,Meal_name,Meal_amount,Meal_ingredients,Meal_price;
 
@@ -57,6 +57,8 @@ public class  cookMenuActivity extends AppCompatActivity {
 
         cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
 
+
+        // meal name listener
         meal_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -67,6 +69,7 @@ public class  cookMenuActivity extends AppCompatActivity {
                 Meal_name = editable.toString();}
         });
 
+        // meal amount listener
         meal_amount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -77,6 +80,7 @@ public class  cookMenuActivity extends AppCompatActivity {
                 Meal_amount = editable.toString();}
         });
 
+        // meal ingredients listener
         meal_ingredients.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -88,6 +92,7 @@ public class  cookMenuActivity extends AppCompatActivity {
             }
         });
 
+        // meal price listener
         meal_price.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -103,6 +108,7 @@ public class  cookMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.out.println("reach0");
+                //add meals on menu.
                 if (Meal_name != null && Meal_amount != null && Meal_price != null && Meal_ingredients != null){
                     System.out.println("reach1");
                     int j = Integer.parseInt(Meal_amount);
@@ -114,6 +120,7 @@ public class  cookMenuActivity extends AppCompatActivity {
                     if(Menu.isEmpty()){
                         cookMenuRef.child(Meal_name).setValue(meal);
                     }
+                    //Check if there are same meals and if there are, add the amount.
                     for (Meal i : Menu) {
                         System.out.println("for loop");
                         if (meal.getMealName().equals(i.getMealName())) {
@@ -138,6 +145,7 @@ public class  cookMenuActivity extends AppCompatActivity {
 
 
         cookMenuRef.addValueEventListener(new ValueEventListener() {
+            //find meal in menu
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Menu.clear();
@@ -157,6 +165,7 @@ public class  cookMenuActivity extends AppCompatActivity {
                         new String[]{"MealName","MealAmount","cookEmail"}, new int []{R.id.Name,R.id.Amount,R.id.cookEmail});
                 cookMenuList.setAdapter(adapter);
 
+                //Check the meal amount.
                 for(Meal i : Menu){
                     if (i.getAmount()==0){
                         cookMenuRef.child(i.getMealName()).removeValue();

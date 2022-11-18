@@ -10,6 +10,7 @@ import android.widget.Button;
 public class clientPageActivity extends AppCompatActivity {
     private Button menulist;
     private String clientEmail;
+    //go to the client interface
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
