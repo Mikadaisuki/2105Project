@@ -33,6 +33,25 @@
             android:textColor="#F7F7F7"
             android:textColorHint="#F7F7F7"/>
 
+        <EditText
+            android:id="@+id/meal_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal ingredients"
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:textColor="#F7F7F7"
+            android:textColorHint="#F7F7F7" />
+        <EditText
+            android:id="@+id/meal_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal price"
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:textColor="#F7F7F7"
+            android:textColorHint="#F7F7F7" />
+
         <Button
             android:id="@+id/createBtn"
             android:layout_width="match_parent"

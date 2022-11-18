@@ -84,7 +84,7 @@ public class clientMenuActivity extends AppCompatActivity {
 
                                 Map<String, String> dataMap = new HashMap<>();
                                 dataMap.put("MealName", meal.getMealName());
-                                dataMap.put("MealAmount", "x" + meal.getAmount());
+                                dataMap.put("MealAmount", "x"+meal.getAmount()+" each"+meal.getPrice()+"$");
                                 dataMap.put("cookEmail", meal.getCookEmail());
                                 data.add(dataMap);
                             }
@@ -99,7 +99,6 @@ public class clientMenuActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         });
 
