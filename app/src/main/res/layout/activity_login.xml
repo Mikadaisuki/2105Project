@@ -157,7 +157,7 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/bt_bg_02"
             android:onClick="register"
-            android:text="Register!"
+            android:text="Register"
             android:textColor="#001858"
             android:textSize="25dp" />
 
