@@ -99,7 +99,6 @@ public class clientMenuActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         });
 
