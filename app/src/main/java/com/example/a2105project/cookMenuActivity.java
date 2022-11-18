@@ -32,10 +32,10 @@ import java.util.Map;
 
 public class cookMenuActivity extends AppCompatActivity {
     private DatabaseReference cookMenuRef;
-    private String CookEmail,Meal_name,Meal_amount;
+    private String CookEmail,Meal_name,Meal_amount,Meal_ingredients,Meal_price;
 
     private Button createBtn;
-    private EditText meal_name,meal_amount;
+    private EditText meal_name,meal_amount,meal_ingredients,meal_price;
 
     private ListView cookMenuList;
     private List<Meal> Menu = new LinkedList<>();
@@ -51,6 +51,8 @@ public class cookMenuActivity extends AppCompatActivity {
         createBtn = (Button)findViewById(R.id.createBtn);
         meal_name = (EditText)findViewById(R.id.meal_name);
         meal_amount = (EditText)findViewById(R.id.meal_amount);
+        meal_ingredients = (EditText)findViewById(R.id.meal_ingredients);
+        meal_price = (EditText)findViewById(R.id.meal_price);
         cookMenuList = (ListView)findViewById(R.id.cookMenuList);
 
         cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
@@ -75,16 +77,40 @@ public class cookMenuActivity extends AppCompatActivity {
                 Meal_amount = editable.toString();}
         });
 
+        meal_ingredients.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Meal_ingredients = editable.toString();
+            }
+        });
+
+        meal_price.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Meal_price = editable.toString();
+            }
+        });
+
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("reach0");
-                if (Meal_name != null && Meal_amount != null){
+                if (Meal_name != null && Meal_amount != null && Meal_price != null && Meal_ingredients != null){
                     System.out.println("reach1");
                     int j = Integer.parseInt(Meal_amount);
                     Meal meal = new Meal(Meal_name);
                     meal.setCookEmail(CookEmail);
                     meal.setAmount(j);
+                    meal.setIngredients(Meal_ingredients);
+                    meal.setPrice(Meal_price);
                     if(Menu.isEmpty()){
                         cookMenuRef.child(Meal_name).setValue(meal);
                     }
@@ -123,7 +149,7 @@ public class cookMenuActivity extends AppCompatActivity {
 
                     Map<String, String> dataMap = new HashMap<>();
                     dataMap.put("MealName",meal.getMealName());
-                    dataMap.put("MealAmount","x"+meal.getAmount());
+                    dataMap.put("MealAmount","x"+meal.getAmount()+" each"+meal.getPrice()+"$");
                     dataMap.put("cookEmail",meal.getCookEmail());
                     data.add(dataMap);
                 }

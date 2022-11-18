@@ -5,6 +5,8 @@ public class Meal {
     private String mealName;
     private String cookEmail;
     private int amount;
+    private String price;
+    private String ingredients;
 
 
     public Meal() {
@@ -38,10 +40,25 @@ public class Meal {
         this.cookEmail = cookEmail;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public String toString() {
-        return "Meal{" + '\'' +
-                ", mealName='" + mealName + '\'' +
+        return "Meal{" + ", mealName='" + mealName + '\'' +
                 ", cookEmail='" + cookEmail + '\'' +
                 '}';
     }
