@@ -39,7 +39,7 @@ public class complaintsView_Activity extends AppCompatActivity {
     private ListView listView;
 
     private Button random;
-
+// definition
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

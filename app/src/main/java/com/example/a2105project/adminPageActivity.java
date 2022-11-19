@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class adminPageActivity extends AppCompatActivity {
     Button ComBtn;
-    //Enter the admin interface
+    // jump to the administration interface
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -58,7 +58,7 @@ public class    cookMenuActivity extends AppCompatActivity {
         cookMenuRef = FirebaseDatabase.getInstance().getReference("Menu/"+CookEmail);
 
 
-        // MealName listener
+        // listener for meal
         meal_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -69,7 +69,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                 Meal_name = editable.toString();}
         });
 
-        // MealAmount listener
+        // listener for Amount of Meal
         meal_amount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -80,7 +80,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                 Meal_amount = editable.toString();}
         });
 
-        // MealIngredients listener
+        // listener for MealIngredients
         meal_ingredients.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -92,7 +92,7 @@ public class    cookMenuActivity extends AppCompatActivity {
             }
         });
 
-        // MealPrice listener
+        // listener for MealPrice
         meal_price.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -145,7 +145,7 @@ public class    cookMenuActivity extends AppCompatActivity {
 
 
         cookMenuRef.addValueEventListener(new ValueEventListener() {
-            //find meal in menu
+            //looking for meal in menu
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Menu.clear();
@@ -165,7 +165,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                         new String[]{"MealName","MealAmount","cookEmail"}, new int []{R.id.Name,R.id.Amount,R.id.cookEmail});
                 cookMenuList.setAdapter(adapter);
 
-                //Check the meal amount.
+                //check the amount of meal
                 for(Meal i : Menu){
                     if (i.getAmount()==0){
                         cookMenuRef.child(i.getMealName()).removeValue();

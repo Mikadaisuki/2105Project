@@ -28,7 +28,7 @@ public class loginActivity extends AppCompatActivity {
     EditText email;
     EditText pwd;
 
-    //Follow strings are used to get value of two Edittext
+    //Get value of two Edittext by the follow strings
     String Email,Pwd,Role;
     boolean tempsus = false;
 
@@ -54,7 +54,7 @@ public class loginActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference = firebaseDatabase.getInstance().getReference("Account");
 
-        //Email listener
+        //Listener for Email
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -69,7 +69,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //Password listener
+        //Listener for Password
         pwd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -84,7 +84,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //RadioButtons listener
+        //Listener for RadioButtons
         ClientRadio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +107,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //FirebaseValue listener
+        //Listener for FirebaseValue
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,7 +124,7 @@ public class loginActivity extends AppCompatActivity {
         });
     }
 
-    //Register method
+    //Register Method
     public void register(View view){
         if(checkRegisterInputsValid()){
             reference = FirebaseDatabase.getInstance().getReference("Account");
@@ -139,7 +139,7 @@ public class loginActivity extends AppCompatActivity {
         }
     }
 
-    //Login method
+    //Login Method
     public void login(View view) {
         if (checkLoginInputsValid()) {
             Intent intent = new Intent();
