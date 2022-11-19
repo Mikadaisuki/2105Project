@@ -27,7 +27,7 @@
             android:id="@+id/meal_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter amount"
+            android:hint="Enter amount(s)"
             android:textSize="30dp"
             android:background="@android:color/transparent"
             android:textColor="#001858"

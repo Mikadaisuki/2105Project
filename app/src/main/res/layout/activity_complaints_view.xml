@@ -23,7 +23,7 @@
             android:id="@+id/random"
             android:layout_width="match_parent"
             android:layout_height="69dp"
-            android:text="click to create 5 Random complaint"
+            android:text="click to create 5 Random complaints"
             android:background="@drawable/bt_bg_03"/>
 
         <ListView

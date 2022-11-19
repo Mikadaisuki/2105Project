@@ -22,7 +22,7 @@
             android:id="@+id/comBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Complaints"
+            android:text="Complaint(s)"
             android:textColor="#001858"
             android:background="@drawable/bt_bg_03"/>
 

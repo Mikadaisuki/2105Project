@@ -129,7 +129,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Please enter an password"
+            android:hint="Please enter a password"
             android:inputType="textPassword"
             android:textColor="#001858"
             android:textColorHint="#001858"
