@@ -1,8 +1,5 @@
 package com.example.a2105project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +8,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2105project.Entity.Account;
 import com.example.a2105project.Entity.Complaint;
@@ -46,6 +46,8 @@ public class complaintsView_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_complaints_view);
         random = (Button) findViewById(R.id.random);
         listView = (ListView)findViewById(R.id.listview);
+
+        System.out.println(listView);
 
         customerIDs = new LinkedList<>();
         cookIDs = new LinkedList<>();
@@ -107,6 +109,8 @@ public class complaintsView_Activity extends AppCompatActivity {
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.complain_list_layout,
                         new String[]{"id","Client","Cook"}, new int []{R.id.comIDtext,R.id.Client, R.id.Cook});
+                System.out.println(adapter);
+                System.out.println(data);
                 listView.setAdapter(adapter);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
