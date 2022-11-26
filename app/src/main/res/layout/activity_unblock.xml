@@ -7,8 +7,9 @@
     tools:context=".unblockActivity">
 
     <ListView
-        android:layout_width="392dp"
-        android:layout_height="707dp"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="12dp" />
+        android:id="@+id/unblockView"
+        android:layout_width="370dp"
+        android:layout_height="687dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="22dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
