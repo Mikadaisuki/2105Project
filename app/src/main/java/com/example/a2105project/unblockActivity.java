@@ -1,10 +1,15 @@
 package com.example.a2105project;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2105project.Entity.Account;
@@ -26,6 +31,7 @@ public class unblockActivity extends AppCompatActivity {
     private List<Account> accounts = new LinkedList<>();
 
     private DatabaseReference susAccountRef;
+    private DatabaseReference accountRef;
     private FirebaseDatabase firebaseDatabase ;
 
     @Override
@@ -61,6 +67,28 @@ public class unblockActivity extends AppCompatActivity {
                 System.out.println(sus);
 
                 blockList.setAdapter(sus);
+                blockList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView userEmail = view.findViewById(R.id.susEmail);
+                        String UserEmail = userEmail.getText().toString();
+                        accountRef = firebaseDatabase.getInstance().getReference("Account/"+UserEmail);
+                        new AlertDialog.Builder(
+                                unblockActivity.this)
+                                .setTitle("Unblock this user?")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, Object> UpStatus = new HashMap<>();
+                                        UpStatus.put("status",  "Active");
+                                        accountRef.updateChildren(UpStatus);
+
+                                    }
+                                })
+                                .setNegativeButton("No",null)
+                                .show();
+                    }
+                });
             }
 
             @Override
