@@ -29,6 +29,8 @@ public class clientPageActivity extends AppCompatActivity {
                 intent.putExtra("Email", clientEmail);
                 intent.setClass(clientPageActivity.this, clientMenuActivity.class);
                 startActivity(intent);
+
+
             }
         });
     }

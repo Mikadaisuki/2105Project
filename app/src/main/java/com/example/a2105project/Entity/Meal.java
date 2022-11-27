@@ -1,6 +1,8 @@
 package com.example.a2105project.Entity;
 
-public class Meal {
+import java.io.Serializable;
+
+public class Meal implements Serializable{
 
     private String mealName;
     private String cookEmail;
