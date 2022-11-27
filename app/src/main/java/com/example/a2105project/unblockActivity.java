@@ -21,23 +21,23 @@ import java.util.Map;
 
 public class unblockActivity extends AppCompatActivity {
 
-    private ListView blockUsersview;
+    private ListView blockList;
 
     private List<Account> accounts = new LinkedList<>();
-    private DatabaseReference susAccountRef;
 
+    private DatabaseReference susAccountRef;
     private FirebaseDatabase firebaseDatabase ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        blockUsersview = (ListView) findViewById(R.id.unblockView);
-
-        System.out.println(blockUsersview);
-
         setContentView(R.layout.activity_unblock);
+
         susAccountRef = firebaseDatabase.getInstance().getReference("Account");
+
+        blockList = (ListView) findViewById(R.id.blockList);
+
+        System.out.println(blockList);
 
         susAccountRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -60,7 +60,7 @@ public class unblockActivity extends AppCompatActivity {
                         new String[]{"Email"}, new int []{R.id.susEmail});
                 System.out.println(sus);
 
-                blockUsersview.setAdapter(sus);
+                blockList.setAdapter(sus);
             }
 
             @Override
@@ -69,5 +69,4 @@ public class unblockActivity extends AppCompatActivity {
             }
         });
     }
-
 }
