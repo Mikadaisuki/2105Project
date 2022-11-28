@@ -51,7 +51,6 @@ public class clientRequsts_Activity extends AppCompatActivity {
                     if(order.getClientEmail().equals(clienEmail)) {
                         orderList.add(order);
 
-
                         Map<String, String> dataMap = new HashMap<>();
                         dataMap.put("ClientId", order.getClientEmail());
                         dataMap.put("CookId", order.getCookEmail());
