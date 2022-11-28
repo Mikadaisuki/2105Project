@@ -35,6 +35,7 @@ public class clientRequsts_Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         clienEmail = intent.getStringExtra("Email");
+        System.out.println(clienEmail);
 
         clientOrder = (ListView)findViewById(R.id.clientRequestList);
 
@@ -43,8 +44,8 @@ public class clientRequsts_Activity extends AppCompatActivity {
         ClientOrderRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Map<String, String >> data = new LinkedList<>();
                 orderList.clear();
+                List<Map<String, String >> data = new LinkedList<>();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Order order = child.getValue(Order.class);
                     if(order.getClientEmail().equals(clienEmail)) {
