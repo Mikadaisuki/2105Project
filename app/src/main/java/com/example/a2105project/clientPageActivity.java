@@ -8,16 +8,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class clientPageActivity extends AppCompatActivity {
-    private Button menulist;
+    private Button menulist,orderHis;
     private String clientEmail;
     // jump to the client interface
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_page);
+        setContentView(R.layout.activity_client_page);
 
-        menulist = (Button)findViewById(R.id.menulist);
+        menulist = (Button)findViewById(R.id.client_Menu);
+        orderHis =(Button)findViewById(R.id.orderList);
 
         Intent intent = getIntent();
         clientEmail = intent.getStringExtra("Email");
@@ -29,8 +30,15 @@ public class clientPageActivity extends AppCompatActivity {
                 intent.putExtra("Email", clientEmail);
                 intent.setClass(clientPageActivity.this, clientMenuActivity.class);
                 startActivity(intent);
+            }
+        });
 
-
+        orderHis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(clientPageActivity.this, clientRequsts_Activity.class);
+                startActivity(intent);
             }
         });
     }
