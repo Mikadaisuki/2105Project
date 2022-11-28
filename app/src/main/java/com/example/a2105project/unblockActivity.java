@@ -67,6 +67,7 @@ public class unblockActivity extends AppCompatActivity {
                 System.out.println(sus);
 
                 blockList.setAdapter(sus);
+
                 blockList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
