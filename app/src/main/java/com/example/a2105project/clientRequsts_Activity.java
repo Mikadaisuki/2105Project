@@ -35,6 +35,7 @@ public class clientRequsts_Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         clienEmail = intent.getStringExtra("Email");
+        System.out.println(clienEmail);
 
         clientOrder = (ListView)findViewById(R.id.clientRequestList);
 
@@ -43,20 +44,20 @@ public class clientRequsts_Activity extends AppCompatActivity {
         ClientOrderRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Map<String, String >> data = new LinkedList<>();
                 orderList.clear();
+                List<Map<String, String >> data = new LinkedList<>();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Order order = child.getValue(Order.class);
-                    if(order.getClientEmail().equals(clienEmail)){
-                    orderList.add(order);
-                    }
+                    if(order.getClientEmail().equals(clienEmail)) {
+                        orderList.add(order);
 
-                    Map<String, String> dataMap = new HashMap<>();
-                    dataMap.put("ClientId",order.getClientEmail());
-                    dataMap.put("CookId",order.getCookEmail());
-                    dataMap.put("id",order.getID());
-                    dataMap.put("mealName",order.getMealName());
-                    data.add(dataMap);
+                        Map<String, String> dataMap = new HashMap<>();
+                        dataMap.put("ClientId", order.getClientEmail());
+                        dataMap.put("CookId", order.getCookEmail());
+                        dataMap.put("id", order.getID());
+                        dataMap.put("mealName", order.getMealName());
+                        data.add(dataMap);
+                    }
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.order_list,
                         new String[]{"ClientId","CookId","id","mealName"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderID,R.id.orderMeal});
