@@ -37,6 +37,7 @@ public class clientPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
+                intent.putExtra("Email", clientEmail);
                 intent.setClass(clientPageActivity.this, clientRequsts_Activity.class);
                 startActivity(intent);
             }

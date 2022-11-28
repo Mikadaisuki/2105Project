@@ -1,5 +1,6 @@
 package com.example.a2105project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,11 +26,15 @@ public class clientRequsts_Activity extends AppCompatActivity {
     private DatabaseReference ClientOrderRef;
     private FirebaseDatabase firebase;
     private List<Order> orderList = new LinkedList<>();
+    private String clienEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_requsts);
+
+        Intent intent = getIntent();
+        clienEmail = intent.getStringExtra("Email");
 
         clientOrder = (ListView)findViewById(R.id.clientRequestList);
 
@@ -42,7 +47,9 @@ public class clientRequsts_Activity extends AppCompatActivity {
                 orderList.clear();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Order order = child.getValue(Order.class);
+                    if(order.getClientEmail().equals(clienEmail)){
                     orderList.add(order);
+                    }
 
                     Map<String, String> dataMap = new HashMap<>();
                     dataMap.put("ClientId",order.getClientEmail());
