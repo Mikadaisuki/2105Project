@@ -31,7 +31,7 @@ public class cookRequests_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cook_requests);
 
-        clientOrder = (ListView)findViewById(R.id.clientRequestList);
+        clientOrder = (ListView)findViewById(R.id.cookRequestList);
 
         ClientOrderRef = firebase.getInstance().getReference("Order");
 
