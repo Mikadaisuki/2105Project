@@ -8,15 +8,30 @@
     tools:context=".clientPageActivity">
 
     <android.widget.Button
-        android:id="@+id/Client_Menu"
+        android:id="@+id/orderList"
         android:layout_width="203dp"
         android:layout_height="57dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="113dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="95dp"
+        android:background="@drawable/bt_bg_01"
+        android:text="View my orders"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/client_Menu"
+        android:layout_width="203dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="95dp"
         android:background="@drawable/bt_bg_01"
         android:text="View offerd Menu List"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

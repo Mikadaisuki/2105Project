@@ -106,6 +106,7 @@ public class clientMenuActivity extends AppCompatActivity {
                                     TextView Cook = (TextView) view.findViewById(R.id.cookEmail);
                                     intent.putExtra("mealName",mealName.getText());
                                     intent.putExtra("Cook", Cook.getText());
+                                    intent.putExtra("clientEmail", ClientEmail);
 
                                     intent.setClass(clientMenuActivity.this, clientMealActivity.class);
                                     startActivity(intent);

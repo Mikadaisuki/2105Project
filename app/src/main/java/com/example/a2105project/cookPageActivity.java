@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class cookPageActivity extends AppCompatActivity {
-    private Button menulist;
+    private Button menulist,request;
     private String cookEmail;
     //get into the cook interface
 
@@ -18,6 +18,7 @@ public class cookPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cook_page);
 
         menulist = (Button)findViewById(R.id.menulist);
+        request =(Button)findViewById(R.id.request);
 
         Intent intent = getIntent();
         cookEmail = intent.getStringExtra("Email");
@@ -28,6 +29,15 @@ public class cookPageActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("Email", cookEmail);
                 intent.setClass(cookPageActivity.this, cookMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(cookPageActivity.this, cookRequests_Activity.class);
                 startActivity(intent);
             }
         });
