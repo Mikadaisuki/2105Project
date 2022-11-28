@@ -7,6 +7,7 @@
     tools:context=".cookRequests_Activity">
 
     <ListView
+        android:id="@+id/cookRequestList"
         android:layout_width="401dp"
         android:layout_height="710dp"
         android:layout_marginStart="5dp"

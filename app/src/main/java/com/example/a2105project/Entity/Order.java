@@ -11,10 +11,11 @@ public class Order {
     public Order() {
     }
 
-    public Order(String status, String cookEmail, String clientEmail, String ID) {
+    public Order(String status, String cookEmail, String clientEmail, String mealName, String ID) {
         this.status = status;
         this.cookEmail = cookEmail;
         this.clientEmail = clientEmail;
+        this.mealName = mealName;
         this.ID = ID;
     }
 
