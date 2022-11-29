@@ -13,84 +13,84 @@
         android:theme="@style/Theme.2105Project"
         tools:targetApi="31">
         <activity
-            android:name=".clientRequsts_Activity"
+            android:name=".ClientPage.clientRequsts_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".cookRequests_Activity"
+            android:name=".CookPage.cookRequests_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".clientMealActivity"
+            android:name=".ClientPage.clientMealActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".clientMenuActivity"
+            android:name=".ClientPage.clientMenuActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".cookMenuActivity"
+            android:name=".CookPage.cookMenuActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".tempSuspendActivity"
+            android:name=".AdminPage.tempSuspendActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".complaintsView_Activity"
+            android:name=".AdminPage.complaintsView_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".reviewsActivity"
+            android:name=".AdminPage.reviewsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".adminPageActivity"
+            android:name=".AdminPage.adminPageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".cookPageActivity"
+            android:name=".CookPage.cookPageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".clientPageActivity"
+            android:name=".ClientPage.clientPageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".unblockActivity"
+            android:name=".AdminPage.unblockActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

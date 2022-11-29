@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".complaintsView_Activity"
+    tools:context=".AdminPage.complaintsView_Activity"
     android:background="#fef6e4">
 
     <LinearLayout
