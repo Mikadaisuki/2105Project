@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="393dp"
-        android:layout_height="111dp"
+        android:layout_width="398dp"
+        android:layout_height="129dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="47dp">
 
         <LinearLayout
@@ -79,7 +79,8 @@
                 android:layout_height="wrap_content"
                 android:text="Order ID :     "
                 android:textColor="#001858"
-                android:textColorHint="#001858" />
+                android:textColorHint="#001858"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/orderID"
@@ -87,13 +88,31 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="#001858"
-                android:textColorHint="#001858" />
+                android:textColorHint="#001858"
+                android:textSize="20dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/orderStatus"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OrderStatus:     "
+                android:textColor="#001858"
+                android:textColorHint="#001858"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#001858"
+                android:textColorHint="#001858"
+                android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
