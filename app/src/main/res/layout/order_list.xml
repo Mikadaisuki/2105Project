@@ -90,6 +90,11 @@
                 android:textColorHint="#001858" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/orderStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
