@@ -10,7 +10,7 @@ import android.widget.Button;
 public class cookPageActivity extends AppCompatActivity {
     private Button menulist,request;
     private String cookEmail;
-    //get into the cook interface
+    // enter to the cook interface
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -165,7 +165,7 @@ public class    cookMenuActivity extends AppCompatActivity {
                         new String[]{"MealName","MealAmount","cookEmail"}, new int []{R.id.Name,R.id.Amount,R.id.cookEmail});
                 cookMenuList.setAdapter(adapter);
 
-                //check the amount of meal
+                //check the meal's amount
                 for(Meal i : Menu){
                     if (i.getAmount()==0){
                         cookMenuRef.child(i.getMealName()).removeValue();
