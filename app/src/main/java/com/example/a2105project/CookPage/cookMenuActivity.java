@@ -1,4 +1,4 @@
-package com.example.a2105project;
+package com.example.a2105project.CookPage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2105project.Entity.Meal;
+import com.example.a2105project.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

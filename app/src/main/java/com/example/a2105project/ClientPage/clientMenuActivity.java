@@ -1,4 +1,4 @@
-package com.example.a2105project;
+package com.example.a2105project.ClientPage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.a2105project.Entity.Meal;
+import com.example.a2105project.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
