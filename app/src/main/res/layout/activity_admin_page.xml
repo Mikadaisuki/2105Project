@@ -31,9 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Unblock users (In progress)"
-            android:textColor="#001858"
-            android:background="@drawable/bt_bg_03"/>
+            android:background="@drawable/bt_bg_03"
+            android:text="Unblock users"
+            android:textColor="#001858" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
