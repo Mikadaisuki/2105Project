@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tempSuspendActivity">
+    tools:context=".tempSuspendActivity"
+    android:background="#fef6e4">
 
     <Button
         android:id="@+id/button5"
@@ -22,6 +23,7 @@
         android:layout_marginBottom="337dp"
         android:text="tempSuspend"
         android:textSize="30dp"
+        android:textColor="#001858"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

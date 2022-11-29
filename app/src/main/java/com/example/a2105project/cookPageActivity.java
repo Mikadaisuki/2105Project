@@ -37,6 +37,7 @@ public class cookPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
+                intent.putExtra("Email", cookEmail);
                 intent.setClass(cookPageActivity.this, cookRequests_Activity.class);
                 startActivity(intent);
             }

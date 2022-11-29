@@ -1,5 +1,6 @@
 package com.example.a2105project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,6 +26,7 @@ public class cookRequests_Activity extends AppCompatActivity {
     private DatabaseReference ClientOrderRef;
     private FirebaseDatabase firebase;
     private List<Order> orderList = new LinkedList<>();
+    private String cookEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class cookRequests_Activity extends AppCompatActivity {
         clientOrder = (ListView)findViewById(R.id.cookRequestList);
 
         ClientOrderRef = firebase.getInstance().getReference("Order");
+        Intent intent = getIntent();
+        cookEmail = intent.getStringExtra("Email");
+        System.out.println(cookEmail);
 
         ClientOrderRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -42,14 +47,16 @@ public class cookRequests_Activity extends AppCompatActivity {
                 orderList.clear();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Order order = child.getValue(Order.class);
-                    orderList.add(order);
+                    if(order.getCookEmail().equals(cookEmail)) {
+                        orderList.add(order);
 
-                    Map<String, String> dataMap = new HashMap<>();
-                    dataMap.put("ClientId",order.getClientEmail());
-                    dataMap.put("CookId",order.getCookEmail());
-                    dataMap.put("id",order.getID());
-                    dataMap.put("mealName",order.getMealName());
-                    data.add(dataMap);
+                        Map<String, String> dataMap = new HashMap<>();
+                        dataMap.put("ClientId", order.getClientEmail());
+                        dataMap.put("CookId", order.getCookEmail());
+                        dataMap.put("id", order.getID());
+                        dataMap.put("mealName", order.getMealName());
+                        data.add(dataMap);
+                    }
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.order_list,
                         new String[]{"ClientId","CookId","id","mealName"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderID,R.id.orderMeal});

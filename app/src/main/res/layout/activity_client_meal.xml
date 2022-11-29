@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".clientMealActivity">
+    tools:context=".clientMealActivity"
+    android:background="#fef6e4">
 
     <LinearLayout
         android:layout_width="379dp"
@@ -23,7 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -31,43 +33,48 @@
                 android:layout_weight="1"
                 android:text="of"
                 android:textSize="30dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#001858"/>
 
             <TextView
                 android:id="@+id/clientMealcook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="556dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/textView89"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Ingredients:"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"/>
 
             <TextView
                 android:id="@+id/ingredientsText"
                 android:layout_width="match_parent"
                 android:layout_height="517dp"
-
+                android:textColor="#001858"
                 android:textSize="30dp" />
 
         </LinearLayout>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/orderBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order" />
+            android:text="Order"
+            android:textColor="#001858"
+            android:background="@drawable/bt_bg_03"/>
 
     </LinearLayout>
 
