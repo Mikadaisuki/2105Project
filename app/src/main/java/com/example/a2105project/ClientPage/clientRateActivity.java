@@ -95,6 +95,8 @@ public class clientRateActivity extends AppCompatActivity {
                 rating.setContent(content);
                 rating.setStar(star);
                 rating.setTime(time);
+                rating.setMealName(mealName);
+
                 String key = reference.push().getKey();
                 key = time;
                 reference.child(time).setValue(rating);

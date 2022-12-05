@@ -6,6 +6,7 @@ public class Rating {
     private String ClientEmail;
     private String Content;
     private String Time;
+    private String mealName;
 
     public Rating() {
     }
@@ -15,6 +16,14 @@ public class Rating {
         CookEmail = cookEmail;
         ClientEmail = clientEmail;
         Content = content;
+    }
+
+    public String getMealName() {
+        return mealName;
+    }
+
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
     }
 
     public float getStar() {

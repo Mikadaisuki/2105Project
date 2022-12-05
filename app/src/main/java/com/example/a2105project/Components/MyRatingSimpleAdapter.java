@@ -20,18 +20,20 @@ public class MyRatingSimpleAdapter extends BaseAdapter {
     List<Rating> Item;
     Context context;
     public MyRatingSimpleAdapter(Context context, List<Rating> list){
+
         Item = list;
         this.context = context;
+
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return Item.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return Item.get(i);
     }
 
     @Override
@@ -41,20 +43,24 @@ public class MyRatingSimpleAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = view;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        v = inflater.inflate(R.layout.client_rate_list, viewGroup, false);
 
-        TextView clientRateContent = (TextView)v.findViewById(R.id.clientRateContent);
-        TextView RateClientEmail = (TextView) v.findViewById(R.id.RateClientEmail);
-        TextView rateTime = (TextView)v.findViewById(R.id.rateTime);
-        RatingBar ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if(view == null){
+            view = inflater.inflate(R.layout.client_rate_list, null, false);
+        }
+
+
+        TextView clientRateContent = (TextView)view.findViewById(R.id.clientRateContent);
+        TextView RateClientEmail = (TextView) view.findViewById(R.id.RateClientEmail);
+        TextView rateTime = (TextView)view.findViewById(R.id.rateTime);
+        RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
 
         RateClientEmail.setText(Item.get(i).getClientEmail());
+        System.out.println(Item.get(i).getClientEmail());
         ratingBar.setRating(Item.get(i).getStar());
         clientRateContent.setText(Item.get(i).getContent());
         rateTime.setText(Item.get(i).getTime());
 
-        return v;
+        return view;
     }
 }
