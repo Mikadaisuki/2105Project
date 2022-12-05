@@ -1,22 +1,16 @@
 package com.example.a2105project.ClientPage;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2105project.Components.MyRatingSimpleAdapter;
 import com.example.a2105project.Entity.Meal;
@@ -31,10 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class clientMealActivity extends AppCompatActivity {
     private List<Rating> Ratings = new LinkedList<>();
@@ -42,12 +34,14 @@ public class clientMealActivity extends AppCompatActivity {
     private DatabaseReference Orderlist;
     private DatabaseReference RatingsList;
     private FirebaseDatabase firebaseDatabase;
+    private float total;
+    private float totalCount;
 
     private TextView clientMealname,clientMealcook,ingredientsText;
 
     private ListView rateList;
     private Button Order;
-
+    private RatingBar totalStar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +58,7 @@ public class clientMealActivity extends AppCompatActivity {
         Orderlist = firebaseDatabase.getInstance().getReference("Order");
         rateList = findViewById(R.id.rateList);
 
+        totalStar = (RatingBar)findViewById(R.id.totalStar);
         ingredientsText = (TextView)findViewById(R.id.ingredientsText);
 
         Order = (Button)findViewById(R.id.orderBtn);
@@ -119,15 +114,23 @@ public class clientMealActivity extends AppCompatActivity {
                     Ratings.add(rating);
                 }
 
+                for(Rating i : Ratings){
+                    total = total+i.getStar();
+                }
+                totalCount = (float) Ratings.size();
+
                 rateList.setAdapter(new MyRatingSimpleAdapter(clientMealActivity.this,Ratings));
 
-
+                totalStar.setRating(total/totalCount);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+        System.out.println(total+" "+totalCount);
 
     }
 

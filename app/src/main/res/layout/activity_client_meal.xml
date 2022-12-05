@@ -49,6 +49,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <RatingBar
+                android:id="@+id/totalStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:isIndicator="true"/>
+
             <TextView
                 android:id="@+id/textView89"
                 android:layout_width="wrap_content"
