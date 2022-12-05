@@ -1,6 +1,8 @@
 package com.example.a2105project.Entity;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Meal implements Serializable{
 
@@ -9,9 +11,19 @@ public class Meal implements Serializable{
     private int amount;
     private String price;
     private String ingredients;
+    private List<Rating> Ratings= new LinkedList<>();
 
 
     public Meal() {
+    }
+
+    public Meal(String mealName, String cookEmail, int amount, String price, String ingredients, List<Rating> ratings) {
+        this.mealName = mealName;
+        this.cookEmail = cookEmail;
+        this.amount = amount;
+        this.price = price;
+        this.ingredients = ingredients;
+        Ratings = ratings;
     }
 
     public Meal(String mealName) {
@@ -56,6 +68,22 @@ public class Meal implements Serializable{
 
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public List<Rating> getRatings() {
+        return Ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        Ratings = ratings;
+    }
+
+    public void addRating(Rating rating){
+        Ratings.add(rating);
+    }
+
+    public void deletRating(Rating rating){
+        Ratings.remove(rating);
     }
 
     @Override

@@ -1,45 +1,64 @@
 package com.example.a2105project.ClientPage;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a2105project.Components.MyRatingSimpleAdapter;
 import com.example.a2105project.Entity.Meal;
 import com.example.a2105project.Entity.Order;
+import com.example.a2105project.Entity.Rating;
 import com.example.a2105project.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class clientMealActivity extends AppCompatActivity {
+    private List<Rating> Ratings = new LinkedList<>();
     private List<Meal> Menu = new LinkedList<>();
-    DatabaseReference Orderlist;
-    FirebaseDatabase firebaseDatabase;
+    private DatabaseReference Orderlist;
+    private DatabaseReference RatingsList;
+    private FirebaseDatabase firebaseDatabase;
 
-    TextView clientMealname,clientMealcook,ingredientsText;
-    Button Order;
+    private TextView clientMealname,clientMealcook,ingredientsText;
+    private ListView rateList;
+    private Button Order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_meal);
 
-        Orderlist = firebaseDatabase.getInstance().getReference("Order");
-
-        ingredientsText = (TextView)findViewById(R.id.ingredientsText);
-        Order = (Button)findViewById(R.id.orderBtn);
-
         Intent intent = getIntent();
         String mealName = intent.getStringExtra("mealName");
         String cookEmail = intent.getStringExtra("Cook");
         String clientEmail = intent.getStringExtra("clientEmail");
+
+        RatingsList = firebaseDatabase.getInstance().getReference("Ratings/"+cookEmail+"/"+mealName);
+        Orderlist = firebaseDatabase.getInstance().getReference("Order");
+        rateList = findViewById(R.id.rateList);
+
+        ingredientsText = (TextView)findViewById(R.id.ingredientsText);
+        Order = (Button)findViewById(R.id.orderBtn);
 
         Menu = (List<Meal>)getIntent().getSerializableExtra("Menu");
 
@@ -62,12 +81,17 @@ public class clientMealActivity extends AppCompatActivity {
             }
         }
 
+
         Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(System.currentTimeMillis());
+                String time = simpleDateFormat.format(date);
+
                 String key = Orderlist.push().getKey();
                 Order order = new Order();
-                order.setID(key);
+                order.setTime(time);
                 order.setClientEmail(clientEmail);
                 order.setCookEmail(cookEmail);
                 order.setMealName(mealName);
@@ -76,5 +100,36 @@ public class clientMealActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        RatingsList.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Ratings.clear();
+                List<Rating> data = new LinkedList<>();
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    Rating rating = child.getValue(Rating.class);
+                    Ratings.add(rating);
+
+                    rating.getTime();
+                    rating.getClientEmail();
+                    rating.getCookEmail();
+                    rating.getStar();
+
+                    System.out.println(Ratings);
+
+                }
+
+                System.out.println(new MyRatingSimpleAdapter(clientMealActivity.this,Ratings));
+                rateList.setAdapter(new MyRatingSimpleAdapter(clientMealActivity.this,Ratings));
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
+
 }
+

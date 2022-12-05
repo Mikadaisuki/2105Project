@@ -5,18 +5,18 @@ public class Order {
     private String cookEmail;
     private String clientEmail;
     private String mealName;
-    private String ID;
+    private String time;
 
 
     public Order() {
     }
 
-    public Order(String status, String cookEmail, String clientEmail, String mealName, String ID) {
+    public Order(String status, String cookEmail, String clientEmail, String mealName, String time) {
         this.status = status;
         this.cookEmail = cookEmail;
         this.clientEmail = clientEmail;
         this.mealName = mealName;
-        this.ID = ID;
+        this.time = time;
     }
 
     public String getStatus() {
@@ -43,12 +43,12 @@ public class Order {
         this.clientEmail = clientEmail;
     }
 
-    public String getID() {
-        return ID;
+    public String getTime() {
+        return time;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getMealName() {
@@ -66,7 +66,7 @@ public class Order {
                 ", cookEmail='" + cookEmail + '\'' +
                 ", clientEmail='" + clientEmail + '\'' +
                 ", mealName='" + mealName + '\'' +
-                ", ID='" + ID + '\'' +
+                ", ID='" + time + '\'' +
                 '}';
     }
 }

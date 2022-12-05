@@ -8,11 +8,11 @@
     android:background="#fef6e4">
 
     <LinearLayout
-        android:layout_width="379dp"
-        android:layout_height="705dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="13dp">
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,45 +24,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp"
-                android:textColor="#001858"/>
+                android:textColor="#001858"
+                android:textSize="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="of"
-                android:textSize="30dp"
                 android:gravity="center"
-                android:textColor="#001858"/>
+                android:text="of"
+                android:textColor="#001858"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/clientMealcook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp"
-                android:textColor="#001858"/>
+                android:textColor="#001858"
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="556dp"
-            android:orientation="vertical"
-            >
+            android:layout_height="412dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView89"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ingredients:"
-                android:textSize="30dp"
-                android:textColor="#001858"/>
+                android:textColor="#001858"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/ingredientsText"
-                android:layout_width="match_parent"
-                android:layout_height="517dp"
+                android:layout_width="370dp"
+                android:layout_height="301dp"
                 android:textColor="#001858"
                 android:textSize="30dp" />
 
@@ -72,9 +71,14 @@
             android:id="@+id/orderBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bt_bg_03"
             android:text="Order"
-            android:textColor="#001858"
-            android:background="@drawable/bt_bg_03"/>
+            android:textColor="#001858" />
+
+        <ListView
+            android:id="@+id/rateList"
+            android:layout_width="match_parent"
+            android:layout_height="167dp" />
 
     </LinearLayout>
 

@@ -1,11 +1,16 @@
 package com.example.a2105project.ClientPage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2105project.Entity.Order;
@@ -55,7 +60,7 @@ public class clientRequsts_Activity extends AppCompatActivity {
                         Map<String, String> dataMap = new HashMap<>();
                         dataMap.put("ClientId", order.getClientEmail());
                         dataMap.put("CookId", order.getCookEmail());
-                        dataMap.put("id", order.getID());
+                        dataMap.put("id", order.getTime());
                         dataMap.put("mealName", order.getMealName());
                         dataMap.put("Status",order.getStatus());
                         dataMap.put("orderStatus", order.getStatus());
@@ -66,6 +71,42 @@ public class clientRequsts_Activity extends AppCompatActivity {
                         new String[]{"ClientId","CookId","id","mealName","Status"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderID,R.id.orderMeal,R.id.orderStatus});
 
                 clientOrder.setAdapter(adapter);
+
+                clientOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView cookEmail = (TextView)findViewById(R.id.orderCook);
+                        TextView mealName = (TextView)findViewById(R.id.orderMeal);
+
+                        new AlertDialog.Builder(
+                                clientRequsts_Activity.this)
+                                .setTitle("Would you like to rate this order?")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent intent = new Intent();
+                                        intent.putExtra("clientEmail",clienEmail);
+                                        intent.putExtra("cookEmail",cookEmail.getText());
+                                        intent.putExtra("mealName",mealName.getText());
+                                        intent.setClass(clientRequsts_Activity.this, clientRateActivity.class);
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setNeutralButton("No",null)
+                                .setNegativeButton("Complanit", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent intent = new Intent();
+                                        intent.putExtra("clientEmail",clienEmail);
+                                        intent.putExtra("cookEmail",cookEmail.getText());
+                                        intent.putExtra("mealName",mealName.getText());
+                                        intent.setClass(clientRequsts_Activity.this, clientComplaintActivity.class);
+                                        startActivity(intent);
+                                    }
+                                })
+                                .show();
+                    }
+                });
             }
 
             @Override
