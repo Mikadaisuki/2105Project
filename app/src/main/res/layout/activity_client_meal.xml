@@ -8,11 +8,10 @@
     android:background="#fef6e4">
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="2dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="412dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -60,8 +59,8 @@
 
             <TextView
                 android:id="@+id/ingredientsText"
-                android:layout_width="370dp"
-                android:layout_height="301dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textColor="#001858"
                 android:textSize="30dp" />
 
@@ -77,8 +76,9 @@
 
         <ListView
             android:id="@+id/rateList"
-            android:layout_width="match_parent"
-            android:layout_height="167dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp" />
 
     </LinearLayout>
 

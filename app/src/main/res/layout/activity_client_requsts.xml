@@ -7,16 +7,28 @@
     tools:context=".ClientPage.clientRequsts_Activity"
     android:background="#fef6e4">
 
-    <ListView
-        android:id="@+id/clientRequestList"
-        android:layout_width="393dp"
-        android:layout_height="703dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="14dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/clientRequestList"
+                android:layout_width="393dp"
+                android:layout_height="703dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="14dp" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,14 @@ package com.example.a2105project.ClientPage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -40,6 +44,7 @@ public class clientMealActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
 
     private TextView clientMealname,clientMealcook,ingredientsText;
+
     private ListView rateList;
     private Button Order;
 
@@ -47,6 +52,8 @@ public class clientMealActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_meal);
+
+
 
         Intent intent = getIntent();
         String mealName = intent.getStringExtra("mealName");
@@ -58,6 +65,7 @@ public class clientMealActivity extends AppCompatActivity {
         rateList = findViewById(R.id.rateList);
 
         ingredientsText = (TextView)findViewById(R.id.ingredientsText);
+
         Order = (Button)findViewById(R.id.orderBtn);
 
         Menu = (List<Meal>)getIntent().getSerializableExtra("Menu");
@@ -109,18 +117,10 @@ public class clientMealActivity extends AppCompatActivity {
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Rating rating = child.getValue(Rating.class);
                     Ratings.add(rating);
-
-                    rating.getTime();
-                    rating.getClientEmail();
-                    rating.getCookEmail();
-                    rating.getStar();
-
-                    System.out.println(Ratings);
-
                 }
 
-                System.out.println(new MyRatingSimpleAdapter(clientMealActivity.this,Ratings));
                 rateList.setAdapter(new MyRatingSimpleAdapter(clientMealActivity.this,Ratings));
+
 
             }
             @Override
