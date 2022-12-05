@@ -60,7 +60,7 @@ public class cookRequests_Activity extends AppCompatActivity {
                         Map<String, String> dataMap = new HashMap<>();
                         dataMap.put("ClientId", order.getClientEmail());
                         dataMap.put("CookId", order.getCookEmail());
-                        dataMap.put("id", order.getID());
+                        dataMap.put("id", order.getTime());
                         dataMap.put("mealName", order.getMealName());
                         dataMap.put("orderStatus", order.getStatus());
                         data.add(dataMap);
