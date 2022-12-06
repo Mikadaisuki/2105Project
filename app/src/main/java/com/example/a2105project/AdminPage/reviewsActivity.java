@@ -89,6 +89,7 @@ public class reviewsActivity extends AppCompatActivity {
 
     public void suspend(View view){
         accountRef.child(cookEmail).child("status").setValue("False");
+        complaintRef.child(comID).removeValue();
         finish();
     }
 

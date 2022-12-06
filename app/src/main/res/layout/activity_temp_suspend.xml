@@ -7,25 +7,17 @@
     tools:context=".AdminPage.tempSuspendActivity"
     android:background="#fef6e4">
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="301dp"
         android:layout_height="112dp"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="234dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="337dp"
         android:text="tempSuspend"
-        android:textSize="30dp"
         android:textColor="#001858"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
