@@ -43,6 +43,7 @@ public class clientMenuActivity extends AppCompatActivity {
     private ListView clientMenu;
 
     private String searchContent;
+    private boolean searchBoolean = false;
 
     private List<Meal> Menu = new LinkedList<>();
     private List<String> clientEmail = new LinkedList<>();
@@ -67,7 +68,6 @@ public class clientMenuActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 clientEmail.clear();
-                List<Map<String, String >> data = new LinkedList<>();
                 for(DataSnapshot child : snapshot.getChildren()){
                     String CookEmail = child.getKey();
                     clientEmail.add(CookEmail);
@@ -102,22 +102,26 @@ public class clientMenuActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot child : snapshot.getChildren()) {
+                                System.out.println("for");
                                 Meal meal = child.getValue(Meal.class);
-                                if(meal.getMealName().equals(searchContent)){
+                                if (meal.getMealName().equalsIgnoreCase(searchContent)) {
+
                                     Menu.add(meal);
 
-                                Map<String, String> dataMap = new HashMap<>();
-                                dataMap.put("MealName", meal.getMealName());
-                                dataMap.put("MealAmount", "x"+meal.getAmount()+" each"+meal.getPrice()+"$");
-                                dataMap.put("cookEmail", meal.getCookEmail());
-                                data.add(dataMap);
-                                }else{
-                                    Toast.makeText(clientMenuActivity.this, "No such item founded", Toast.LENGTH_SHORT).show();
-                                }
-                                System.out.println(Menu);
+                                    Map<String, String> dataMap = new HashMap<>();
+                                    dataMap.put("MealName", meal.getMealName());
+                                    dataMap.put("MealAmount", "x" + meal.getAmount() + " each" + meal.getPrice() + "$");
+                                    dataMap.put("cookEmail", meal.getCookEmail());
+                                    data.add(dataMap);
+
+                                    searchBoolean = true;
+
+                                System.out.println(data);
                                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(), data, R.layout.menu_list,
                                         new String[]{"MealName", "MealAmount", "cookEmail"}, new int[]{R.id.Name, R.id.Amount, R.id.cookEmail});
-                                clientMenu.setAdapter(adapter);
+                                clientMenu.setAdapter(adapter);}
+                            }
+
 
                                 clientMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
@@ -135,7 +139,6 @@ public class clientMenuActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     }
                                 });
-                            }
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {}
