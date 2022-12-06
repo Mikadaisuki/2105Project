@@ -6,18 +6,21 @@ public class Order {
     private String clientEmail;
     private String mealName;
     private String time;
+    private String ID;
 
 
     public Order() {
     }
 
-    public Order(String status, String cookEmail, String clientEmail, String mealName, String time) {
+    public Order(String status, String cookEmail, String clientEmail, String mealName, String time, String ID) {
         this.status = status;
         this.cookEmail = cookEmail;
         this.clientEmail = clientEmail;
         this.mealName = mealName;
         this.time = time;
+        this.ID = ID;
     }
+
 
     public String getStatus() {
         return status;
@@ -57,6 +60,14 @@ public class Order {
 
     public void setMealName(String mealName) {
         this.mealName = mealName;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     @Override

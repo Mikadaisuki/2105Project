@@ -63,11 +63,12 @@ public class cookRequests_Activity extends AppCompatActivity {
                         dataMap.put("id", order.getTime());
                         dataMap.put("mealName", order.getMealName());
                         dataMap.put("orderStatus", order.getStatus());
+                        dataMap.put("orderID", order.getID());
                         data.add(dataMap);
                     }
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.order_list,
-                        new String[]{"ClientId","CookId","id","mealName","orderStatus"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderID,R.id.orderMeal,R.id.orderStatus});
+                        new String[]{"ClientId","CookId","id","mealName","orderStatus","orderID"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderTime,R.id.orderMeal,R.id.orderStatus,R.id.orderID});
 
                 cookOrder.setAdapter(adapter);
 

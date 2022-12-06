@@ -94,6 +94,7 @@ public class clientMealActivity extends AppCompatActivity {
 
                 String key = Orderlist.push().getKey();
                 Order order = new Order();
+                order.setID(key);
                 order.setTime(time);
                 order.setClientEmail(clientEmail);
                 order.setCookEmail(cookEmail);

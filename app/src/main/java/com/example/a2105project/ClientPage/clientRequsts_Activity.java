@@ -68,7 +68,7 @@ public class clientRequsts_Activity extends AppCompatActivity {
                     }
                 }
                 SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),data,R.layout.order_list,
-                        new String[]{"ClientId","CookId","id","mealName","Status"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderID,R.id.orderMeal,R.id.orderStatus});
+                        new String[]{"ClientId","CookId","id","mealName","Status"}, new int []{R.id.clientID,R.id.orderCook,R.id.orderTime,R.id.orderMeal,R.id.orderStatus});
 
                 clientOrder.setAdapter(adapter);
 
