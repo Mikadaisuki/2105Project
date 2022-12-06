@@ -23,12 +23,12 @@
             android:inputType="textPersonName" />
 
         <android.widget.Button
-            android:background="@drawable/bt_bg_01"
             android:id="@+id/searchBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="refresh"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bt_bg_01"
+            android:text="Search" />
 
         <android.widget.Button
             android:background="@drawable/bt_bg_01"
