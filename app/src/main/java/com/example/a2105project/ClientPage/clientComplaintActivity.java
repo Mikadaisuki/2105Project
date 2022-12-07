@@ -69,7 +69,7 @@ public class clientComplaintActivity extends AppCompatActivity {
                 complaint.setCustomerID(customerID);
                 reference.push().setValue(complaint);
                 Toast.makeText(clientComplaintActivity.this, "You have successfully filed your complaint", Toast.LENGTH_SHORT).show();
-
+                finish();
             }
         });
 

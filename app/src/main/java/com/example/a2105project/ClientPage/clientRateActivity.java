@@ -101,6 +101,7 @@ public class clientRateActivity extends AppCompatActivity {
                 key = time;
                 reference.child(time).setValue(rating);
                 Toast.makeText(clientRateActivity.this, "Thank you!", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

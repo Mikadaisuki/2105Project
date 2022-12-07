@@ -75,8 +75,8 @@ public class clientRequsts_Activity extends AppCompatActivity {
                 clientOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        TextView cookEmail = (TextView)findViewById(R.id.orderCook);
-                        TextView mealName = (TextView)findViewById(R.id.orderMeal);
+                        TextView cookEmail = (TextView)view.findViewById(R.id.orderCook);
+                        TextView mealName = (TextView)view.findViewById(R.id.orderMeal);
 
                         new AlertDialog.Builder(
                                 clientRequsts_Activity.this)
