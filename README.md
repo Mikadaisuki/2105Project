@@ -14,4 +14,8 @@ The cook and client can login by same account in Deliverable 2 introduction, aft
 Chefs can freely choose to add and remove any meal from their own menu, client can see all meals of cook.<br>
 Also, there is a MealTest class(path:com.example.a2105project(Test)) to test Meal class.
 
-The client can search the name of the food to order.Customers can evaluate the chef through the client
+Deliverable 4 introduction:<br>
+Based on previous deliveries, in the client menu, the client can search for certain dish, or view all dishes.<br>All dishes can be ordered. After an order is created, the client can view his/her all orders in the order page, and click on an item to rate or complain.<br>
+Cook can receive his/her own dish order, and set order status (processing,finish,reject) 
+
+
