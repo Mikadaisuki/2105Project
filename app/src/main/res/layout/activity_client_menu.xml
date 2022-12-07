@@ -27,7 +27,7 @@
             android:id="@+id/searchBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="refresh"
+            android:text="Search"
             android:layout_marginBottom="10dp"/>
 
         <android.widget.Button

@@ -9,9 +9,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.a2105project.Entity.Complaint;
 import com.example.a2105project.R;
+import com.example.a2105project.loginActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -66,6 +68,7 @@ public class clientComplaintActivity extends AppCompatActivity {
                 complaint.setCookID(cookID);
                 complaint.setCustomerID(customerID);
                 reference.push().setValue(complaint);
+                Toast.makeText(clientComplaintActivity.this, "You have successfully filed your complaint", Toast.LENGTH_SHORT).show();
 
             }
         });

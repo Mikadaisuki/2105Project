@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fef6e4"
     tools:context=".ClientPage.clientComplaintActivity">
 
     <LinearLayout
@@ -17,9 +18,9 @@
             android:layout_height="126dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:inputType="text|textMultiLine"
             android:ems="10"
             android:hint="Please enter Reason Here:"
-            android:inputType="textPassword"
             android:textColor="#001858"
             android:textColorHint="#001858"
             android:textSize="25dp" />
@@ -31,7 +32,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/bt_bg_02"
+            android:background="@drawable/bt_bg_03"
             android:text="Submit"
             android:textColor="#001858"
             android:textSize="25dp" />

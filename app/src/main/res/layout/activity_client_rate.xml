@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClientPage.clinteRateActivity">
+    android:background="#fef6e4"
+    tools:context=".ClientPage.clientComplaintActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,26 +23,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"
+                android:textColorHint="#001858"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" of  "
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"
+                android:textColorHint="#001858"/>
 
             <TextView
                 android:id="@+id/rateCookEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="#001858"
+                android:textColorHint="#001858"/>
         </LinearLayout>
 
         <RatingBar
             android:id="@+id/starBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:foregroundTint="#FFC107"
             android:numStars="5" />
 
         <EditText
@@ -49,14 +57,20 @@
             android:layout_width="match_parent"
             android:layout_height="480dp"
             android:gravity="top"
+            android:hint="Please enter reason Here:"
             android:inputType="text|textMultiLine"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:textColor="#001858"
+            android:textColorHint="#001858"/>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/subBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:background="@drawable/bt_bg_03"
+            android:text="Submit"
+            android:textColor="#001858"
+            android:textSize="25dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
