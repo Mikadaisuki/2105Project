@@ -90,6 +90,14 @@ public class cookRequests_Activity extends AppCompatActivity {
 
                                     }
                                 })
+                                .setNeutralButton("Reject", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, Object> UpStatus = new HashMap<>();
+                                        UpStatus.put("status",  "Rejected");
+                                        CookOrderRef.updateChildren(UpStatus);
+                                    }
+                                })
                                 .setNegativeButton("No",null)
                                 .show();
 
