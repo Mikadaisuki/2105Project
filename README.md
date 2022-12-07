@@ -16,6 +16,7 @@ Also, there is a MealTest class(path:com.example.a2105project(Test)) to test Mea
 
 **Deliverable 4 introduction:**<br />
 Based on previous deliveries, in the client menu, the client can search for certain dish, or view all dishes.<br>All dishes can be ordered. After an order is created, the client can view his/her all orders in the order page, and click on an item to rate or complain.<br>
-Cook can receive his/her own dish order, and set order status (processing,finish,reject) 
+Cook can receive his/her own dish order, and set order status (processing,finish,reject) <br>
+And also added two test file (OrederTest.class,RatingTest.class )
 
 
